@@ -4,7 +4,7 @@
 // dispatching an action is the only way to get into
 // the store to update the global state
 
-import { DEPOSIT, WITHDRAW, COLLECT_INTEREST, DELETE_ACCOUNT } from '../Types'
+import { DEPOSIT, WITHDRAW, COLLECT_INTEREST, DELETE_ACCOUNT, TOGGLE_ACCOUNT } from '../Types'
 
 export const depositAction = (amount) => {
     return {
@@ -27,9 +27,16 @@ export const collectInterestAction = () => {
     }
 }
 
-export const deleteAccount = () => {
+export const deleteAccount = (amount) => {
     return {
         type: DELETE_ACCOUNT,
+        payload: amount
+    }
+}
+
+export const toggleAccount = () => {
+    return {
+        type: TOGGLE_ACCOUNT,
         payload: ''
     }
 }

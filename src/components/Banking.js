@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { depositAction, withdrawAction, collectInterestAction, deleteAccount} from '../redux/banking/actions/BankingActions'
+import { depositAction, withdrawAction, toggleAccount, collectInterestAction, deleteAccount} from '../redux/banking/actions/BankingActions'
 
 const Banking = () => {
     const [amount, setAmount] = useState(0)
@@ -37,9 +37,15 @@ const Banking = () => {
                 </button>
                 <button 
                 className="btn btn-secondary"
-                onClick={() => dispatch(deleteAccount())}
+                onClick={() => dispatch(toggleAccount())}
                 >
-                    Change Account Type
+                    Check Account Type
+                </button>
+                <button 
+                className="btn btn-danger"
+                onClick={() => dispatch(deleteAccount(total.amount))}
+                >
+                    Delete Account
                 </button>
             </div>
         </div>

@@ -10,10 +10,11 @@
 
 // return the same object type as the initial state object
 
-import { DEPOSIT, WITHDRAW, COLLECT_INTEREST, DELETE_ACCOUNT } from '../Types'
+import { DEPOSIT, WITHDRAW, COLLECT_INTEREST, DELETE_ACCOUNT, TOGGLE_ACCOUNT } from '../Types'
 
 const initialState = {
-    amount: 0
+    amount: 0,
+    isSavingsAccount: false
 }
 
 export const bankReducer = (state = initialState, action) => {
@@ -36,9 +37,15 @@ export const bankReducer = (state = initialState, action) => {
         case DELETE_ACCOUNT:
             return {
                 ...state,
-                amount: state.amount - state.amount
+                amount: state.amount - action.payload
+            }
+        case TOGGLE_ACCOUNT:
+            return {
+                ...state,
+                isSavingsAccount: !state.isSavingsAccount
             }
         default:
             return state
     }
 }
+
